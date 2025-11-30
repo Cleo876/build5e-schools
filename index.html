@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build5E for Schools | Partner Proposal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            purple: '#7C3AED', 
+                            lightPurple: '#F3E8FF',
+                            darkPurple: '#4C1D95',
+                            green: '#10B981',   
+                            lightGreen: '#D1FAE5',
+                            darkGreen: '#065F46',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .gradient-text {
+            background: linear-gradient(90deg, #7C3AED 0%, #4C1D95 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero-bg {
+            background: radial-gradient(circle at top right, #F3E8FF 0%, #ffffff 40%);
+        }
+        .slider-thumb::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #7C3AED;
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #ddd6fe;
+        }
+        .slider-thumb::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #7C3AED;
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #ddd6fe;
+        }
+        /* FAQ Accordion Styles */
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .faq-open .faq-content {
+            max-height: 200px; /* Arbitrary large height */
+        }
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        .faq-open .faq-icon {
+            transform: rotate(180deg);
+        }
+        /* Print Styles - ENHANCED FOR PDF EXPORT */
+        @media print {
+            .no-print { display: none !important; }
+            body { 
+                font-size: 12pt; 
+                -webkit-print-color-adjust: exact !important; /* Forces background colors */
+                print-color-adjust: exact !important;
+            }
+            a { text-decoration: none; color: black; }
+            /* Ensure text contrasts well on printed backgrounds */
+            .text-white { color: black !important; } /* Fallback for some printers */
+            .bg-brand-purple { color: white !important; } /* Force white text on purple blocks */
+        }
+
+        /* Timeline Animations */
+        .timeline-item .timeline-content {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .timeline-item .timeline-dot {
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .timeline-item .timeline-line-fill {
+            height: 0%;
+            transition: height 0.8s ease-in-out;
+        }
+
+        /* Active State for Timeline */
+        .timeline-item.active .timeline-content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .timeline-item.active .timeline-dot {
+            transform: scale(1);
+        }
+        .timeline-item.active .timeline-line-fill {
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Navigation -->
+    <nav class="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-7xl mx-auto no-print">
+        <div class="flex items-center gap-2">
+            <div class="w-8 h-8 bg-brand-purple rounded-lg flex items-center justify-center text-white font-bold text-xl">B</div>
+            <span class="text-xl font-bold tracking-tight text-gray-900">Build5E <span class="text-brand-purple text-sm font-medium bg-brand-lightPurple px-2 py-1 rounded-full ml-1">For Schools</span></span>
+        </div>
+        <a href="#contact" class="hidden md:inline-block bg-white border border-gray-200 text-gray-700 hover:border-brand-purple hover:text-brand-purple px-5 py-2 rounded-full font-medium transition-all text-sm">
+            Contact Sales
+        </a>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-bg pt-12 pb-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="inline-flex items-center gap-2 bg-brand-lightGreen text-brand-darkGreen px-4 py-1.5 rounded-full text-sm font-semibold mb-6 shadow-sm border border-brand-green/20">
+                <i class="fa-solid fa-check-circle"></i> NSC Aligned & CXC Ready
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">
+                Ensure Every Lesson Plan is <br>
+                <span class="gradient-text">Ministry Inspection Ready</span>
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                Empower your departments with the AI tool built specifically for Jamaican educators. 
+                Reduce teacher burnout, ensure 5E compliance, and modernize your school's curriculum planning.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 no-print items-start">
+                <a href="#calculator" class="bg-brand-purple hover:bg-brand-darkPurple text-white px-8 py-4 rounded-xl font-bold text-lg shadow-lg shadow-brand-purple/30 transition-all transform hover:-translate-y-1 h-full flex items-center">
+                    See Your School's ROI
+                </a>
+                
+                <div class="flex flex-col items-center">
+                    <button onclick="window.print()" class="bg-white hover:bg-gray-50 text-gray-700 border border-gray-200 px-8 py-4 rounded-xl font-semibold text-lg transition-all flex items-center justify-center gap-2 mb-2 shadow-sm">
+                        <i class="fa-solid fa-file-pdf text-red-500"></i> Download Board Proposal
+                    </button>
+                    <p class="text-xs text-brand-purple font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-arrow-up"></i> Saves this page as a PDF for your Board meeting
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Animated Trust/Stats Section -->
+    <section class="border-y border-gray-100 bg-gray-50 py-10" id="stats-section">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div>
+                <div class="text-4xl font-bold text-gray-900 mb-1 flex justify-center items-center">
+                    <span class="count-up" data-target="286">0</span><span>+</span>
+                </div>
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Hours Saved Since October</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-gray-900 mb-1">NSC & CXC</div>
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Fully Compliant Framework</div>
+            </div>
+            <div>
+                <div class="text-4xl font-bold text-gray-900 mb-1 flex justify-center items-center">
+                    <span class="count-up" data-target="0">0</span>
+                </div>
+                <div class="text-sm font-medium text-gray-500 uppercase tracking-wide">Administrative Setup Required</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table: Us vs Generic AI -->
+    <section class="py-20 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Build5E Over Generic Tools?</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">ChatGPT is powerful, but it's not a Jamaican educator. We built Build5E to bridge the gap between AI and the Ministry's requirements.</p>
+        </div>
+        
+        <div class="overflow-x-auto rounded-2xl shadow-xl border border-gray-100">
+            <table class="w-full text-left border-collapse bg-white">
+                <thead>
+                    <tr class="bg-gray-900 text-white">
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider w-1/4">Feature</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider w-1/4 bg-brand-purple">Build5E (Us)</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider w-1/4 text-gray-300">Generic AI (ChatGPT)</th>
+                        <th class="p-6 text-sm font-bold uppercase tracking-wider w-1/4 text-gray-300">Manual Planning</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-6 font-semibold text-gray-900">Time to Create</td>
+                        <td class="p-6 text-brand-purple font-bold bg-purple-50">< 2 Minutes</td>
+                        <td class="p-6 text-gray-600">~ 1.25 Hours due to editing</td>
+                        <td class="p-6 text-gray-600">4+ Hours</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-6 font-semibold text-gray-900">NSC Alignment</td>
+                        <td class="p-6 text-brand-purple font-bold bg-purple-50"><i class="fa-solid fa-check-circle mr-2"></i> Guaranteed</td>
+                        <td class="p-6 text-gray-600">Hit or Miss (Requires Prompting)</td>
+                        <td class="p-6 text-gray-600">Yes, but time consuming</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-6 font-semibold text-gray-900">Output Format</td>
+                        <td class="p-6 text-brand-purple font-bold bg-purple-50">Formatted PDF</td>
+                        <td class="p-6 text-gray-600">Plain Text (Lacks structure)</td>
+                        <td class="p-6 text-gray-600">Word Doc / Handwritten</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-6 font-semibold text-gray-900">5E Framework</td>
+                        <td class="p-6 text-brand-purple font-bold bg-purple-50">Built-in Structure</td>
+                        <td class="p-6 text-gray-600">Often Forgets Steps</td>
+                        <td class="p-6 text-gray-600">Standard</td>
+                    </tr>
+                    <tr class="hover:bg-gray-50">
+                        <td class="p-6 font-semibold text-gray-900">Differentiation</td>
+                        <td class="p-6 text-brand-purple font-bold bg-purple-50">Auto-Generated</td>
+                        <td class="p-6 text-gray-600">Vague / Generic</td>
+                        <td class="p-6 text-gray-600">High Mental Effort</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- NEW: Department Coverage Section -->
+    <section class="py-16 bg-white border-b border-gray-100">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8">Works for Every Department</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-flask"></i></div>
+                    <div class="font-bold text-sm">Sciences</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-calculator"></i></div>
+                    <div class="font-bold text-sm">Mathematics</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-book-open"></i></div>
+                    <div class="font-bold text-sm">Language Arts</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-laptop-code"></i></div>
+                    <div class="font-bold text-sm">Info Tech</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-briefcase"></i></div>
+                    <div class="font-bold text-sm">Business</div>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <div class="text-brand-purple text-2xl mb-2"><i class="fa-solid fa-palette"></i></div>
+                    <div class="font-bold text-sm">The Arts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Problem vs Solution (Existing) -->
+    <section class="py-20 px-6 max-w-7xl mx-auto bg-gray-50 rounded-3xl">
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 text-gray-900">Solve The "Burnout" Crisis</h2>
+                <div class="space-y-6">
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0 text-red-500">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Reclaim Teaching Time</h3>
+                            <p class="text-gray-600">Traditional planning eats up evenings and weekends. We give that time back to your staff.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 text-orange-500">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Inspection Anxiety? Gone.</h3>
+                            <p class="text-gray-600">Ministry inspections are stressful when paperwork is missing. Build5E ensures every file is ready and compliant.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4">
+                        <div class="w-12 h-12 bg-brand-lightPurple rounded-full flex items-center justify-center flex-shrink-0 text-brand-purple">
+                            <i class="fa-solid fa-shield-alt"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Standardized Quality</h3>
+                            <p class="text-gray-600">Ensure every lesson plan in your school—from new hires to veterans—follows the rigorous 5E Instructional Model.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-gray-900 text-white rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-brand-purple opacity-20 blur-3xl rounded-full -mr-20 -mt-20"></div>
+                <h3 class="text-xl font-bold mb-6 border-b border-gray-700 pb-4">The Build5E Advantage</h3>
+                <ul class="space-y-4 text-gray-300">
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-brand-green"></i> <span>Auto-generated <strong>Differentiation Strategies</strong></span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-brand-green"></i> <span><strong>NSC-Specific</strong> Learning Objectives</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-brand-green"></i> <span>Instant <strong>PDF Export</strong> for Submission</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-brand-green"></i> <span><strong>Worksheet Generator</strong> (Coming Soon)</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i class="fa-solid fa-check text-brand-green"></i> <span><strong>School Domain</strong> Verification Security</span>
+                    </li>
+                </ul>
+                <div class="mt-8 bg-gray-800 rounded-lg p-4 text-center border border-gray-700">
+                    <p class="text-sm text-gray-400 mb-1">Department Access Starting at</p>
+                    <p class="text-3xl font-bold text-white">$5,000 JMD <span class="text-sm font-normal text-gray-400">/ term</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Calculator (Existing) -->
+    <section id="calculator" class="py-20 bg-brand-purple text-white relative overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-10">
+            <div class="absolute top-10 left-10 w-40 h-40 bg-white rounded-full blur-2xl"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Calculate Your Impact</h2>
+                <p class="text-brand-lightPurple text-lg">See how much time your school could save this term.</p>
+            </div>
+
+            <div class="bg-white text-gray-900 rounded-2xl shadow-xl p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-12">
+                    
+                    <!-- Input Side -->
+                    <div class="space-y-8">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-600 mb-2 uppercase tracking-wide">Number of Departments</label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" min="1" max="10" value="6" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb" id="deptSlider" oninput="updateCalc()">
+                                <span class="text-2xl font-bold text-brand-purple w-12 text-center" id="deptValue">6</span>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-600 mb-2 uppercase tracking-wide">Avg. Teachers per Dept</label>
+                            <div class="flex items-center gap-4">
+                                <input type="range" min="1" max="20" value="8" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider-thumb" id="teacherSlider" oninput="updateCalc()">
+                                <span class="text-2xl font-bold text-brand-purple w-12 text-center" id="teacherValue">8</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Comparison Stats Box -->
+                        <div class="p-5 bg-gray-50 rounded-xl border border-gray-200">
+                            <h4 class="text-sm font-bold text-gray-800 mb-3 uppercase tracking-wide border-b pb-2">Time to Create 1 Lesson Plan</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Traditional Method</span>
+                                    <span class="font-bold text-red-500">~ 4.0 Hours</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600">Using ChatGPT</span>
+                                    <span class="font-bold text-orange-500">~ 1.25 Hours</span>
+                                </div>
+                                <div class="flex justify-between items-center bg-brand-lightPurple/50 -mx-2 px-2 py-1 rounded">
+                                    <span class="font-bold text-brand-purple">Using Build5E</span>
+                                    <span class="font-bold text-green-600">&lt; 2 Minutes</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Result Side -->
+                    <div class="flex flex-col justify-center space-y-6">
+                        <div class="text-center p-6 bg-gray-50 rounded-xl border border-gray-100">
+                            <div class="text-gray-500 text-sm font-medium mb-1">Total Hours Saved (Per Term)</div>
+                            <div class="text-4xl font-bold text-brand-green" id="hoursResult">0</div>
+                            <div class="text-xs text-gray-400 mt-2">*Based on 5 plans/week per teacher</div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="text-gray-500 text-sm font-medium mb-1">Cost Per Teacher (Per Term)</div>
+                            <div class="text-5xl font-bold text-gray-900" id="costResult">$1,000</div>
+                            <div class="text-xs text-brand-purple font-medium mt-2 bg-brand-lightPurple inline-block px-3 py-1 rounded-full">
+                                Less than the cost of a marker pack
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How Verification Works (Existing) -->
+    <section id="how-it-works" class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold mb-4 text-gray-900">Seamless Security & Onboarding</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">We use your school's existing email infrastructure to verify staff. No complex IT setup required.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 relative">
+            <!-- Connecting Line (Desktop) -->
+            <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-200 -z-10 transform -translate-y-1/2"></div>
+
+            <!-- Step 1 -->
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center relative">
+                <div class="w-12 h-12 bg-brand-purple text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 border-4 border-white">1</div>
+                <h3 class="font-bold text-lg mb-2">School Partner Setup</h3>
+                <p class="text-sm text-gray-600">We register your school's email domain (e.g., @stjago.edu.jm) in our secure database.</p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center relative">
+                <div class="w-12 h-12 bg-brand-purple text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 border-4 border-white">2</div>
+                <h3 class="font-bold text-lg mb-2">Teacher Sign Up</h3>
+                <p class="text-sm text-gray-600">Teachers create an account and select "Partner School." They must use their official school email.</p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center relative">
+                <div class="w-12 h-12 bg-brand-green text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10 border-4 border-white">3</div>
+                <h3 class="font-bold text-lg mb-2">Auto-Verification</h3>
+                <p class="text-sm text-gray-600">A code is sent to their inbox. Once entered, they instantly get Pro access for the term.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Interactive Timeline Section -->
+    <section class="py-20 bg-gray-50 border-t border-gray-200" id="timeline-section">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4 text-gray-900">From Decision to Done in 48 Hours</h2>
+                <p class="text-gray-600">No complex IT integration. We handle the technical setup.</p>
+            </div>
+            
+            <div class="relative timeline-container pl-4 md:pl-0">
+                
+                <!-- Day 1 -->
+                <div class="timeline-item flex gap-8 pb-16 relative">
+                     <!-- Line Structure -->
+                     <div class="flex flex-col items-center relative z-10 w-12 flex-shrink-0">
+                        <!-- Dot -->
+                        <div class="w-10 h-10 rounded-full bg-brand-purple text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-purple-200 timeline-dot border-4 border-white">1</div>
+                        <!-- Static Background Line -->
+                        <div class="absolute top-10 bottom-0 w-1 bg-gray-200 -z-10 h-full"></div>
+                        <!-- Animated Fill Line -->
+                        <div class="absolute top-10 w-1 bg-brand-purple -z-0 timeline-line-fill"></div>
+                    </div>
+                    <!-- Content -->
+                    <div class="timeline-content pt-1">
+                        <div class="text-sm font-bold text-brand-purple uppercase tracking-wider mb-2">Day 1</div>
+                        <h3 class="text-2xl font-bold text-gray-900">Confirm & Process</h3>
+                        <p class="text-gray-600 mt-2 text-lg">You approve the Department Pilot and send the bank transfer. We provide the invoice immediately.</p>
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="timeline-item flex gap-8 pb-16 relative">
+                     <!-- Line Structure -->
+                     <div class="flex flex-col items-center relative z-10 w-12 flex-shrink-0">
+                        <!-- Dot -->
+                        <div class="w-10 h-10 rounded-full bg-brand-purple text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-purple-200 timeline-dot border-4 border-white">2</div>
+                        <!-- Static Background Line -->
+                        <div class="absolute top-10 bottom-0 w-1 bg-gray-200 -z-10 h-full"></div>
+                        <!-- Animated Fill Line -->
+                        <div class="absolute top-10 w-1 bg-brand-purple -z-0 timeline-line-fill"></div>
+                    </div>
+                    <!-- Content -->
+                    <div class="timeline-content pt-1">
+                        <div class="text-sm font-bold text-brand-purple uppercase tracking-wider mb-2">Day 2</div>
+                        <h3 class="text-2xl font-bold text-gray-900">Whitelist Domain</h3>
+                        <p class="text-gray-600 mt-2 text-lg">We add your school's email domain to our secure partner list. No software to install on school computers.</p>
+                    </div>
+                </div>
+
+                <!-- Day 3 -->
+                <div class="timeline-item flex gap-8 relative">
+                    <!-- Line Structure -->
+                    <div class="flex flex-col items-center relative z-10 w-12 flex-shrink-0">
+                        <!-- Dot -->
+                        <div class="w-10 h-10 rounded-full bg-brand-green text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-green-200 timeline-dot border-4 border-white">3</div>
+                        <!-- No line below last item -->
+                    </div>
+                    <!-- Content -->
+                    <div class="timeline-content pt-1">
+                        <div class="text-sm font-bold text-brand-green uppercase tracking-wider mb-2">Day 3</div>
+                        <h3 class="text-2xl font-bold text-gray-900">Live & Planning</h3>
+                        <p class="text-gray-600 mt-2 text-lg">Teachers sign up, verify their email, and start generating lesson plans immediately.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing (Existing) -->
+    <section class="py-20 px-6 bg-white">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-10 text-gray-900">Simple, Predictable Department Pricing</h2>
+            
+            <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-brand-purple/20 transform transition-all hover:scale-105 duration-300">
+                <div class="bg-brand-purple p-4 text-white font-bold tracking-wider text-sm uppercase">
+                    Recommended for High Schools
+                </div>
+                <div class="p-10">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-2">Department License</h3>
+                    <p class="text-gray-500 mb-6">Unlimited Access for one semester</p>
+                    
+                    <div class="flex justify-center items-baseline mb-8">
+                        <span class="text-5xl font-extrabold text-gray-900">$5,000</span>
+                        <span class="text-xl text-gray-500 ml-2">JMD / dept</span>
+                    </div>
+
+                    <ul class="text-left space-y-4 mb-8 max-w-sm mx-auto">
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span class="text-gray-700">Unlimited 5E Lesson Plans</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span class="text-gray-700">All Teachers in Department Included</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span class="text-gray-700">Domain Verification Security</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-6 h-6 rounded-full bg-green-100 text-green-600 flex items-center justify-center text-xs"><i class="fa-solid fa-check"></i></div>
+                            <span class="text-gray-700">Priority Support</span>
+                        </li>
+                    </ul>
+
+                    <a href="mailto:cleowillo@gmail.com?subject=Department%20Pilot%20Request%20-%20%5BInsert%20School%20Name%5D&body=Dear%20Build5E%20Team%2C%0A%0AWe%20would%20like%20to%20proceed%20with%20a%20Department%20Pilot%20(%245%2C000%20JMD%2Fterm)%20for%20our%20school.%0A%0APlease%20generate%20an%20invoice%20for%20us%20using%20the%20details%20below%3A%0A%0A---%20Billing%20Details%20---%0ASchool%20Name%3A%20%0ABilling%20Address%3A%20%0ATRN%20(Optional)%3A%20%0AContact%20Person%3A%20%0APhone%20Number%3A%20%0A%0A---%20Pilot%20Scope%20---%0ATarget%20Department(s)%3A%20%0AApproximate%20Number%20of%20Teachers%3A%20%0A%0AWe%20acknowledge%20that%20payment%20is%20via%20Bank%20Transfer%20ONLY%20(No%20Checks).%20Please%20reply%20with%20your%20banking%20details.%0A%0ARegards%2C" class="block w-full bg-gray-900 hover:bg-gray-800 text-white font-bold py-4 rounded-xl transition-all">
+                        Request Department Pilot
+                    </a>
+                    <div class="mt-4 text-xs text-gray-400">
+                        <p>One-time payment per term. No hidden fees.</p>
+                        <p class="mt-1 font-medium text-red-500 bg-red-50 inline-block px-2 py-1 rounded">
+                            <i class="fa-solid fa-circle-info mr-1"></i> Payment via Bank Transfer only. No Checks.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Existing) -->
+    <section class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4 text-gray-900">Frequently Asked Questions</h2>
+            <p class="text-gray-600">Common questions from School Administrators.</p>
+        </div>
+
+        <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                <button class="w-full px-6 py-4 text-left font-bold text-gray-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>Do you accept checks from the Ministry/School Board?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon text-brand-purple"></i>
+                </button>
+                <div class="faq-content bg-gray-50">
+                    <div class="px-6 py-4 text-gray-600 text-sm">
+                        No. To keep our operational costs low and service instant, we only accept <strong>Bank Transfers</strong> or Digital Payments. We provide a full invoice for your records, but we cannot process physical checks.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                <button class="w-full px-6 py-4 text-left font-bold text-gray-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>How do you know if a teacher actually works here?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon text-brand-purple"></i>
+                </button>
+                <div class="faq-content bg-gray-50">
+                    <div class="px-6 py-4 text-gray-600 text-sm space-y-2">
+                        <p>We use a secure <strong>Domain Matching & Email Verification</strong> process to ensure only your actual staff get access:</p>
+                        <ol class="list-decimal pl-5 space-y-1">
+                            <li>We register your school's official email domain (e.g., <em>@stjago.edu.jm</em>) in our partner database.</li>
+                            <li>When a teacher signs up, they select your school and <strong>must</strong> enter their school-issued email address.</li>
+                            <li>Our system automatically checks if their email matches your registered domain.</li>
+                            <li>If it matches, we send a unique <strong>verification code</strong> directly to that school email inbox.</li>
+                            <li>The teacher must enter this code to prove they have access to the email account, finalizing their verification.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                <button class="w-full px-6 py-4 text-left font-bold text-gray-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>Is "Unlimited" really unlimited?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon text-brand-purple"></i>
+                </button>
+                <div class="faq-content bg-gray-50">
+                    <div class="px-6 py-4 text-gray-600 text-sm">
+                        Yes. For the duration of the term, any teacher in the participating department can generate as many lesson plans as they need for their classes. There are no "point limits" for school partners.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                <button class="w-full px-6 py-4 text-left font-bold text-gray-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>Does it work on mobile phones?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon text-brand-purple"></i>
+                </button>
+                <div class="faq-content bg-gray-50">
+                    <div class="px-6 py-4 text-gray-600 text-sm">
+                        Absolutely. Build5E is fully mobile-optimized. Teachers can generate a plan on their phone while commuting and have the PDF waiting in their email when they reach school.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div class="border border-gray-200 rounded-lg bg-white overflow-hidden">
+                <button class="w-full px-6 py-4 text-left font-bold text-gray-800 flex justify-between items-center focus:outline-none" onclick="toggleFaq(this)">
+                    <span>What if I lose a plan or the PDF fails?</span>
+                    <i class="fa-solid fa-chevron-down faq-icon text-brand-purple"></i>
+                </button>
+                <div class="faq-content bg-gray-50">
+                    <div class="px-6 py-4 text-gray-600 text-sm">
+                        You never lose work. The dashboard has a <strong>Lesson Plan History</strong> where you can re-download PDFs anytime. As a fail-safe, we also email the full text version to your inbox, which is perfect for copy-pasting into specific school templates if needed.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white py-12 px-6 no-print">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-4">
+                    <div class="w-8 h-8 bg-brand-purple rounded-lg flex items-center justify-center text-white font-bold text-xl">B</div>
+                    <span class="text-xl font-bold">Build5E</span>
+                </div>
+                <p class="text-gray-400 max-w-sm">Proudly built in Jamaica for the advancement of our region's education system.</p>
+            </div>
+            <div class="text-center md:text-right">
+                <p class="font-bold text-lg mb-2">Ready to modernize your school?</p>
+                <a href="mailto:contact@build5e.c3o.click" class="text-brand-green hover:text-white transition-colors text-xl font-bold">
+                    contact@build5e.c3o.click
+                </a>
+                <p class="text-sm text-gray-500 mt-4">&copy; 2025 Creative Efficiency Operations.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const parent = button.parentElement;
+            parent.classList.toggle('faq-open');
+        }
+
+        // Calculator Logic
+        function updateCalc() {
+            const depts = parseInt(document.getElementById('deptSlider').value);
+            const teachersPerDept = parseInt(document.getElementById('teacherSlider').value);
+            const costPerDept = 5000; // JMD
+            const hoursSavedPerTeacherPerWeek = 20; 
+            const weeksPerTerm = 12;
+
+            document.getElementById('deptValue').innerText = depts;
+            document.getElementById('teacherValue').innerText = teachersPerDept;
+
+            const totalTeachers = depts * teachersPerDept;
+            const totalCost = depts * costPerDept;
+            const costPerTeacher = totalTeachers > 0 ? Math.round(totalCost / totalTeachers) : 0;
+            const totalHoursSaved = totalTeachers * hoursSavedPerTeacherPerWeek * weeksPerTerm;
+
+            document.getElementById('hoursResult').innerText = totalHoursSaved.toLocaleString();
+            document.getElementById('costResult').innerText = "$" + costPerTeacher.toLocaleString() + " JMD";
+        }
+
+        // Initialize Calculator
+        updateCalc();
+
+        // Stats Animation Logic
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counters = entry.target.querySelectorAll('.count-up');
+                    counters.forEach(counter => {
+                        const target = +counter.getAttribute('data-target');
+                        const duration = 2000; // 2 seconds
+                        const increment = target / (duration / 16); // 60fps
+                        
+                        let current = 0;
+                        const updateCount = () => {
+                            current += increment;
+                            if (current < target) {
+                                counter.innerText = Math.ceil(current);
+                                requestAnimationFrame(updateCount);
+                            } else {
+                                counter.innerText = target;
+                            }
+                        };
+                        updateCount();
+                    });
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const statsSection = document.getElementById('stats-section');
+            if(statsSection) observer.observe(statsSection);
+        });
+
+        // Timeline Animation Logic (Updated for Scroll Dependency)
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Activate the specific item currently in view
+                    entry.target.classList.add('active');
+                    
+                    // Stop observing this specific item so it stays visible
+                    timelineObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 }); // Wait until 60% of the item is visible before triggering
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select individual items instead of the container
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => timelineObserver.observe(item));
+        });
+    </script>
+</body>
+</html>
